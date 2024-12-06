@@ -1,13 +1,16 @@
 # nginx-hmac-token-module
 hmac token module for nginx protects any directive
-
 Compilation Instructions:
 1. Save this file as ngx_http_hmac_module.c
-2. Use the following commands to compile and include the module in NGINX:
+2. Install the necessary libraries (e.g., OpenSSL):
 
-   $ ./configure --add-module=/path/to/ngx_http_hmac_module.c
+   $ sudo apt-get install libssl-dev
+
+3. Use the following commands to compile and include the module in NGINX:
+
+   $ ./configure --add-module=/path/to/ngx_http_hmac_module.c --with-cc-opt='-I/usr/include/openssl' --with-ld-opt='-L/usr/lib -lssl -lcrypto'
    $ make
-   $ make install
+   $ sudo make install
 
 Client Code Example:
 - Generate HMAC token using Python:
@@ -50,3 +53,6 @@ http {
     }
 }
 ```
+
+
+
